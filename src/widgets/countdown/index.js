@@ -17,7 +17,8 @@ export class CountdownWidget extends React.Component {
         Math.round((today - then) / (1000 * 60 * 60 * 24))
       );
 
-      this.setState({ 
+
+      this.setState({
         count: count
       });
     }, 3600000);
