@@ -1,8 +1,14 @@
 body {
-  background-color: red;
+  height: 100vh;
+  background: url(../assets/images/dashboardBG.jpg) center;
+  background-size: cover;
 }
-.countdown {
-  background-color: rgba(255, 255, 255, 0.5);
+.widget {
+  padding: 2em;
+  margin: 2em;
   color: white;
-  padding: 15px;
+  border: solid 1px white;
+  border-radius: 10px;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.8);
 }

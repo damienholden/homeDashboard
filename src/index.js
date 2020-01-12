@@ -2,7 +2,7 @@ import * as React from "react";
 import { render } from "react-dom";
 import { CountdownWidget } from "./widgets/countdown";
 import { WeatherWidget } from "./widgets/weather";
-const widgets = [<CountdownWidget />, <WeatherWidget />];
+const widgets = [<WeatherWidget />, <CountdownWidget />];
 render(widgets, document.getElementById("root"));
 
 if (module.hot) {
