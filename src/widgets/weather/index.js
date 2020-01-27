@@ -1,10 +1,22 @@
 import React from "react";
 const request = require("request");
 var cityName = "";
+var request_url;
 const OPEN_WEATHER_API = "e16828cc9474d70f6316405aa0b3a2a2"; //get Openweather api from https://openweathermap.org/api
 const getWeather = () => {
   return new Promise((resolve, reject) => {
-    const request_url = `http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`;
+    request_url = `http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+      console.log('coodorinates:' + navigator.geolocation.getCurrentPosition )
+    }
+    function showPosition(position) {
+     if (position.coords) {
+    request_url = `http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&id=2964574&appid=${OPEN_WEATHER_API}&units=metric`;
+     }
+     console.log(request_url);
+    }
+    
 
     http: request.get(request_url, (err, resp, body) => {
       if (err) reject(err);
