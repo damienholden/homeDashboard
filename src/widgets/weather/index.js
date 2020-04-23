@@ -5,28 +5,40 @@ var request_url;
 const OPEN_WEATHER_API = "e16828cc9474d70f6316405aa0b3a2a2"; //get Openweather api from https://openweathermap.org/api
 const getWeather = () => {
   return new Promise((resolve, reject) => {
-    request_url = `http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`;
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
-      console.log('coodorinates:' + navigator.geolocation.getCurrentPosition )
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          setRequestUrl(
+            `http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
+          );
+        },
+        function(error) {
+          setRequestUrl(
+            `http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
+          );
+        }
+      );
+    } else {
+      // Set the default Location to Dublin
+      setRequestUrl(
+        `http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
+      );
     }
-    function showPosition(position) {
-     if (position.coords) {
-    request_url = `http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&id=2964574&appid=${OPEN_WEATHER_API}&units=metric`;
-     }
-     console.log(request_url);
-    }
-    
 
-    http: request.get(request_url, (err, resp, body) => {
+    const request_URL = sessionStorage.getItem("request_url");
+    http: request.get(request_URL, (err, resp, body) => {
       if (err) reject(err);
       let data = JSON.parse(body);
-      console.log(data);
       let response = [data.list[1], data.list[9], data.list[17]];
+      console.log(response);
       cityName = data.city["name"];
       resolve(response);
     });
   });
+
+  function setRequestUrl(url) {
+    sessionStorage.setItem("request_url", url);
+  }
 };
 
 export class WeatherWidget extends React.Component {
@@ -34,7 +46,7 @@ export class WeatherWidget extends React.Component {
     super(props);
 
     this.state = {
-      weather: []
+      weather: [],
     };
   }
 
@@ -42,19 +54,19 @@ export class WeatherWidget extends React.Component {
     this.mounted = true;
     if (this.mounted) {
       getWeather()
-        .then(weatherData => {
-          weatherData.map(day => {
+        .then((weatherData) => {
+          weatherData.map((day) => {
             const dayObj = {
               day: new Date(day.dt_txt).getDay() - 1,
               temp: day.main.temp,
-              icon: day.weather[0].icon
+              icon: day.weather[0].icon,
             };
             this.setState({
-              arr: this.state.weather.push(dayObj)
+              arr: this.state.weather.push(dayObj),
             });
           });
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(`Encountered error: `, error);
         });
     }
@@ -74,7 +86,7 @@ export class WeatherWidget extends React.Component {
       "Thursday",
       "Friday",
       "Saturday",
-      "Sunday"
+      "Sunday",
     ];
     const humanText = ["Today", "Tomorrow"];
 
