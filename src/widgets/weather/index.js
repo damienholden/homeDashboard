@@ -24,7 +24,7 @@ const getWeather = () => {
         `http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
       );
     }
-
+    //TODO: Find an efficient way of sending a request for the weather on every page reload. Maybe session storage that gets cleared every day and sends a new request the following day?
     const request_URL = sessionStorage.getItem("request_url");
     http: request.get(request_URL, (err, resp, body) => {
       if (err) reject(err);

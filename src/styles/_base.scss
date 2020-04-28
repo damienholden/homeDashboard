@@ -2,10 +2,11 @@ body {
   height: 100vh;
   background: url(../assets/images/dashboardBG.jpg) center;
   background-size: cover;
+  font-family: "Roboto", sans-serif;
 }
 .widget {
   padding: 2em;
-  margin: 2em;
+  margin: 1em;
   color: white;
   border-radius: 8px;
   display: inline-block;

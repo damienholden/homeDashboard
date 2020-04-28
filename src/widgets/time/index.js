@@ -6,24 +6,30 @@ export class TimeWidget extends React.Component {
     const today = new Date();
     const count = Math.abs(Math.round((today - then) / (1000 * 60 * 60 * 24)));
     this.state = {
-      count: count
+      count: count,
     };
   }
   componentDidMount() {
     setInterval(() => {
       var today = new Date();
+      var isTwelveHour;
+      var hours = today.getHours();
+      if (hours - 12 > 0) {
+        hours -= 12;
+        isTwelveHour = true;
+      }
       var time =
-        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        hours + ":" + today.getMinutes() + (isTwelveHour ? "pm" : "am");
 
       this.setState({
-        time: time
+        time: time,
       });
     }, 1000);
   }
   render() {
     return (
       <div className="widget countdown fl w-25 pa2">
-        <div className="heading">Time</div>
+        <div className="heading">Local Time:</div>
         <div className="time">{this.state.time}</div>
         {/* <Skeleton variant="rect" width={210} height={118} /> */}
       </div>
