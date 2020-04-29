@@ -12,14 +12,17 @@ export class TimeWidget extends React.Component {
   componentDidMount() {
     setInterval(() => {
       var today = new Date();
-      var isTwelveHour;
+      var isTwelveHour, mins;
+      var mins = today.getMinutes();
       var hours = today.getHours();
       if (hours - 12 > 0) {
         hours -= 12;
         isTwelveHour = true;
       }
-      var time =
-        hours + ":" + today.getMinutes() + (isTwelveHour ? "pm" : "am");
+      if (today.getMinutes() < 10) {
+        mins = `0${today.getMinutes()}`;
+      }
+      var time = hours + ":" + mins + (isTwelveHour ? "pm" : "am");
 
       this.setState({
         time: time,
