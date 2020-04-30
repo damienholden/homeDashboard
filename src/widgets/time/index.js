@@ -31,7 +31,7 @@ export class TimeWidget extends React.Component {
   }
   render() {
     return (
-      <div className="widget countdown fl w-25 pa2">
+      <div className="widget countdown fl w-100 w-25-ns ma3-ns mt4 pa2">
         <div className="time">{this.state.time}</div>
         {/* <Skeleton variant="rect" width={210} height={118} /> */}
       </div>
