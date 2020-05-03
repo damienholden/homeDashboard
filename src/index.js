@@ -4,8 +4,7 @@ import { CountdownWidget } from "./widgets/countdown";
 import { WeatherWidget } from "./widgets/weather";
 import { TimeWidget } from "./widgets/time";
 
-const widgets = [<TimeWidget />];
-//<CountdownWidget />
+const widgets = [<TimeWidget />, <WeatherWidget />];
 render(widgets, document.getElementById("root"));
 if (module.hot) {
   module.hot.accept();

@@ -91,7 +91,7 @@ export class WeatherWidget extends React.Component {
     const humanText = ["Today", "Tomorrow"];
 
     return (
-      <div className="widget weather">
+      <div className="widget weather fl-ns w-90 w-auto-ns ma3-ns mt4 pa2 center">
         <div className="heading">Weather in: {cityName}</div>
 
         {weatherData.map((day, index) => (
