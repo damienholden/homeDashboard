@@ -9,19 +9,19 @@ const getWeather = () => {
       navigator.geolocation.getCurrentPosition(
         function(position) {
           setRequestUrl(
-            `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
           );
         },
         function(error) {
           setRequestUrl(
-            `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
+            `https://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
           );
         }
       );
     } else {
       // Set the default Location to Dublin
       setRequestUrl(
-        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?id=2964574&appid=${OPEN_WEATHER_API}&units=metric`
       );
     }
     //TODO: Find an efficient way of sending a request for the weather on every page reload. Maybe session storage that gets cleared every day and sends a new request the following day?
