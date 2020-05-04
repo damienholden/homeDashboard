@@ -28,6 +28,7 @@ const getWeather = () => {
     const request_URL = sessionStorage.getItem("request_url");
     http: request.get(request_URL, (err, resp, body) => {
       console.log("RequestURL: " + request_URL);
+      console.log("body: " + body);
       if (err) reject(err);
       let data = JSON.parse(body);
       let response = [data.list[1], data.list[9], data.list[17]];
