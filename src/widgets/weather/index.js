@@ -26,9 +26,8 @@ const getWeather = () => {
     }
     //TODO: Find an efficient way of sending a request for the weather on every page reload. Maybe session storage that gets cleared every day and sends a new request the following day?
     const request_URL = sessionStorage.getItem("request_url");
-    console.log(request_url);
     http: request.get(request_URL, (err, resp, body) => {
-      console.log(resp);
+      console.log("RequestURL: " + request_URL);
       if (err) reject(err);
       let data = JSON.parse(body);
       let response = [data.list[1], data.list[9], data.list[17]];
