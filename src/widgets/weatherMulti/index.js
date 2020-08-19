@@ -1,4 +1,6 @@
 import React from "react";
+import Skeleton from "react-loading-skeleton";
+
 const request = require("request");
 var cityName = "";
 var request_url;
@@ -27,12 +29,12 @@ const getWeather = () => {
     //TODO: Find an efficient way of sending a request for the weather on every page reload. Maybe session storage that gets cleared every day and sends a new request the following day?
     const request_URL = sessionStorage.getItem("request_url");
     http: request.get(request_URL, (err, resp, body) => {
-      console.log("RequestURL: " + request_URL);
-      console.log("body: " + body);
+      // console.log("RequestURL: " + request_URL);
+      // console.log("body: " + body);
       if (err) reject(err);
       let data = JSON.parse(body);
       let response = [data.list[1], data.list[9], data.list[17]];
-      console.log(response);
+      // console.log(response);
       cityName = data.city["name"];
       resolve(response);
     });
@@ -43,7 +45,7 @@ const getWeather = () => {
   }
 };
 
-export class WeatherWidget extends React.Component {
+export class WeatherWidgetMulti extends React.Component {
   constructor(props) {
     super(props);
 
@@ -94,7 +96,11 @@ export class WeatherWidget extends React.Component {
 
     return (
       <div className="widget weather fl-ns w-90 w-auto-ns ma3-ns mt4 pa2 center">
-        <div className="heading">Weather in: {cityName}</div>
+        {cityName ? (
+          <div className="heading">Weather in: {cityName}</div>
+        ) : (
+          <Skeleton variant="rect" width={210} height={118} />
+        )}
 
         {weatherData.map((day, index) => (
           <div className="group" key={index}>
@@ -106,7 +112,11 @@ export class WeatherWidget extends React.Component {
                 src={`http://openweathermap.org/img/wn/${day.icon}@2x.png`}
               />
             </div>
-            <div className="temp">{Math.round(day.temp)}°</div>
+            {day.temp ? (
+              <div className="temp">{Math.round(day.temp)}°</div>
+            ) : (
+              <Skeleton variant="rect" width={210} height={118} />
+            )}
           </div>
         ))}
       </div>

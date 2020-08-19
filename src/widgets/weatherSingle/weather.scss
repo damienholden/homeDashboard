@@ -1,0 +1,18 @@
+.weatherSingle {
+  min-height: 250px;
+  min-width: 220px;
+  padding: 1em;
+  .heading {
+    margin-bottom: 0.75em;
+  }
+  .group {
+    display: inline-block;
+    text-align: center;
+    border: solid 1px white;
+    border-radius: 15px;
+    margin: 1em;
+    padding: 0.75em;
+    min-height: 165px;
+    min-width: 126px;
+  }
+}

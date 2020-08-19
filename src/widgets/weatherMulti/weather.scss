@@ -1,6 +1,6 @@
 .weather {
-  min-height: 115px;
-  min-width: 210px;
+  min-height: 294px;
+  min-width: 540px;
   .heading {
     margin-bottom: 0.75em;
   }
@@ -11,5 +11,7 @@
     border-radius: 15px;
     margin: 1em;
     padding: 0.75em;
+    min-height: 165px;
+    min-width: 126px;
   }
 }

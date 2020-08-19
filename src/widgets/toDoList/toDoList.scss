@@ -1,12 +1,9 @@
-.time {
+.toDoList {
   padding: 2em;
   border-radius: 10px;
   min-height: 65px;
-  .time {
-    font-size: 40px;
-    font-weight: 400;
-    padding: 15px 0 5px 0;
-    text-align: center;
+  button {
+    background: blue;
   }
   .meta {
     font-size: 15px;
