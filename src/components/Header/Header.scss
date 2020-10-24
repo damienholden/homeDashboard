@@ -1,0 +1,19 @@
+header {
+  background-color:black;
+  ul {
+    display: inline-block;
+  li {
+    display: inline;
+    a {
+      padding:10px;
+      font-size:18px;
+      color:white;
+      text-decoration:none;
+    }
+    .active {
+      border-bottom:2px solid red;
+      // transition: border-bottom 300ms ease-out;
+    }
+  }
+  }
+}

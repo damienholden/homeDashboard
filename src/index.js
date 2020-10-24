@@ -1,12 +1,11 @@
-import * as React from "react";
-import { render } from "react-dom";
-//import { CountdownWidget } from "./widgets/countdown";
-import { WeatherWidgetSingle } from "./widgets/weatherSingle";
-import { ToDoList } from "./widgets/ToDoList";
-import { TimeWidget } from "./widgets/time";
+import React from 'react';
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
-const widgets = [<TimeWidget />, <WeatherWidgetSingle />];
-render(widgets, document.getElementById("root"));
-if (module.hot) {
-  module.hot.accept();
-}
+ReactDOM.render(
+  <BrowserRouter>
+      <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+)
