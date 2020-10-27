@@ -1,19 +1,26 @@
 header {
-  background-color:black;
+  background-color: white;
   ul {
     display: inline-block;
-  li {
-    display: inline;
-    a {
-      padding:10px;
-      font-size:18px;
-      color:white;
-      text-decoration:none;
+    li {
+      display: inline;
+      margin:0 5px;
+      a {
+        padding: 10px 16px;
+        font-size: 18px;
+        color: #000;
+        text-align: center;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        &:hover {
+          border-color: #000;
+          transition: border-color 1s ease;
+        }
+      }
+      .active {
+        border-color: #000;
+        transition: border-color 1s ease;
+      }
     }
-    .active {
-      border-bottom:2px solid red;
-      // transition: border-bottom 300ms ease-out;
-    }
-  }
   }
 }

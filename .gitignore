@@ -3,3 +3,4 @@ dist
 .cache
 # Local Netlify folder
 .netlify
+.env

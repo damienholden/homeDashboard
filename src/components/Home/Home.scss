@@ -1,0 +1,34 @@
+html {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../../assets/images/homeBG.jpg) no-repeat top;
+  background-size: cover;
+  main {
+    .Home {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      margin: 8em 0 0 0;
+      &__Link {
+        margin: 15px 0;
+        display: flex;
+        justify-content: center;
+        .Link {
+          margin: 0 15px;
+          &:hover {
+            background-color: #fff;
+            color: #000;
+            transition: all ease 400ms;
+          }
+        }
+      }
+      &__Social {
+        margin: 15px 0;
+        svg:hover{
+          color:#a9a9a9;
+          transition: color ease 400ms;
+        }
+      }
+    }
+  }
+}

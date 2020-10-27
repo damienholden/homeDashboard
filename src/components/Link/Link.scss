@@ -1,0 +1,11 @@
+.Link {
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+}
+.Link__Button{
+  &:hover {
+    background-color: white!important;
+    color:#000000!important;
+  }
+}
